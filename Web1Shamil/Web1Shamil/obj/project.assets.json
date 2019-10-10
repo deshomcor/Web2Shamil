@@ -5887,7 +5887,6 @@
       "sha512": "HS3iRWZKcUw/8eZ/08GXKY2Bn7xNzQPzf8gRPHGSowX7u7XXu9i9YEaBeBNKUXWfI7qjvT2zXtLUvbN0hds8vg==",
       "type": "package",
       "path": "microsoft.codeanalysis.analyzers/1.1.0",
-      "hasTools": true,
       "files": [
         ".nupkg.metadata",
         "ThirdPartyNotices.rtf",
@@ -12535,11 +12534,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\технодом\\source\\repos\\Web1Shamil\\Web1Shamil\\Web1Shamil.csproj",
+      "projectUniqueName": "C:\\Users\\технодом\\Desktop\\Web2Shamil-master\\Web1Shamil\\Web1Shamil\\Web1Shamil.csproj",
       "projectName": "Web1Shamil",
-      "projectPath": "c:\\Users\\технодом\\source\\repos\\Web1Shamil\\Web1Shamil\\Web1Shamil.csproj",
+      "projectPath": "C:\\Users\\технодом\\Desktop\\Web2Shamil-master\\Web1Shamil\\Web1Shamil\\Web1Shamil.csproj",
       "packagesPath": "C:\\Users\\технодом\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\технодом\\source\\repos\\Web1Shamil\\Web1Shamil\\obj\\",
+      "outputPath": "C:\\Users\\технодом\\Desktop\\Web2Shamil-master\\Web1Shamil\\Web1Shamil\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
