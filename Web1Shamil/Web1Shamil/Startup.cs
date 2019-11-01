@@ -17,9 +17,9 @@ namespace Web1Shamil
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MoviesContext>(options =>
+            services.AddDbContext<MContext>(options =>
             {
-                options.UseSqlite("Filename=movies.db");
+                options.UseSqlite("Filename=league.db");
             });
             services.AddMvc();
         }
@@ -36,7 +36,7 @@ namespace Web1Shamil
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Hello}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
 
             app.UseStaticFiles();
