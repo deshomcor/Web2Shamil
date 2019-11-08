@@ -34,7 +34,7 @@ namespace Web1Shamil.Controllers
             }
 
             var players = await _context.Players
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.PlayersId == id);
             if (players == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace Web1Shamil.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Surname")] Players players)
+        public async Task<IActionResult> Create([Bind("PlayersId,PlayersName,PlayersSurname,TeamsId")] Players players)
         {
             if (ModelState.IsValid)
             {
@@ -86,9 +86,9 @@ namespace Web1Shamil.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Surname")] Players players)
+        public async Task<IActionResult> Edit(int id, [Bind("PlayersId,PlayersName,PlayersSurname,TeamsId")] Players players)
         {
-            if (id != players.Id)
+            if (id != players.PlayersId)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace Web1Shamil.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PlayersExists(players.Id))
+                    if (!PlayersExists(players.PlayersId))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace Web1Shamil.Controllers
             }
 
             var players = await _context.Players
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.PlayersId == id);
             if (players == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace Web1Shamil.Controllers
 
         private bool PlayersExists(int id)
         {
-            return _context.Players.Any(e => e.Id == id);
+            return _context.Players.Any(e => e.PlayersId == id);
         }
     }
 }

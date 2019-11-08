@@ -22,7 +22,7 @@ namespace Web1Shamil.Controllers
         // GET: Coaches
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Coach.ToListAsync());
+            return View(await _context.Coaches.ToListAsync());
         }
 
         // GET: Coaches/Details/5
@@ -33,7 +33,7 @@ namespace Web1Shamil.Controllers
                 return NotFound();
             }
 
-            var coach = await _context.Coach
+            var coach = await _context.Coaches
                 .FirstOrDefaultAsync(m => m.CoachId == id);
             if (coach == null)
             {
@@ -73,7 +73,7 @@ namespace Web1Shamil.Controllers
                 return NotFound();
             }
 
-            var coach = await _context.Coach.FindAsync(id);
+            var coach = await _context.Coaches.FindAsync(id);
             if (coach == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace Web1Shamil.Controllers
                 return NotFound();
             }
 
-            var coach = await _context.Coach
+            var coach = await _context.Coaches
                 .FirstOrDefaultAsync(m => m.CoachId == id);
             if (coach == null)
             {
@@ -139,15 +139,15 @@ namespace Web1Shamil.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var coach = await _context.Coach.FindAsync(id);
-            _context.Coach.Remove(coach);
+            var coach = await _context.Coaches.FindAsync(id);
+            _context.Coaches.Remove(coach);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CoachExists(int id)
         {
-            return _context.Coach.Any(e => e.CoachId == id);
+            return _context.Coaches.Any(e => e.CoachId == id);
         }
     }
 }

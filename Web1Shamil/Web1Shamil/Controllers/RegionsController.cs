@@ -10,22 +10,22 @@ using Web1Shamil.Models.Classes;
 
 namespace Web1Shamil.Controllers
 {
-    public class TeamsController : Controller
+    public class RegionsController : Controller
     {
         private readonly MContext _context;
 
-        public TeamsController(MContext context)
+        public RegionsController(MContext context)
         {
             _context = context;
         }
 
-        // GET: Teams
+        // GET: Regions
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Teams.ToListAsync());
+            return View(await _context.Regions.ToListAsync());
         }
 
-        // GET: Teams/Details/5
+        // GET: Regions/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace Web1Shamil.Controllers
                 return NotFound();
             }
 
-            var teams = await _context.Teams
-                .FirstOrDefaultAsync(m => m.TeamsId == id);
-            if (teams == null)
+            var regions = await _context.Regions
+                .FirstOrDefaultAsync(m => m.RegionsId == id);
+            if (regions == null)
             {
                 return NotFound();
             }
 
-            return View(teams);
+            return View(regions);
         }
 
-        // GET: Teams/Create
+        // GET: Regions/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Teams/Create
+        // POST: Regions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TeamsId,TeamsName,TeamsStadium,RegionsId,StageId")] Teams teams)
+        public async Task<IActionResult> Create([Bind("RegionsId,RegionsName")] Regions regions)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(teams);
+                _context.Add(regions);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(teams);
+            return View(regions);
         }
 
-        // GET: Teams/Edit/5
+        // GET: Regions/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace Web1Shamil.Controllers
                 return NotFound();
             }
 
-            var teams = await _context.Teams.FindAsync(id);
-            if (teams == null)
+            var regions = await _context.Regions.FindAsync(id);
+            if (regions == null)
             {
                 return NotFound();
             }
-            return View(teams);
+            return View(regions);
         }
 
-        // POST: Teams/Edit/5
+        // POST: Regions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TeamsId,TeamsName,TeamsStadium,RegionsId,StageId")] Teams teams)
+        public async Task<IActionResult> Edit(int id, [Bind("RegionsId,RegionsName")] Regions regions)
         {
-            if (id != teams.TeamsId)
+            if (id != regions.RegionsId)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace Web1Shamil.Controllers
             {
                 try
                 {
-                    _context.Update(teams);
+                    _context.Update(regions);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TeamsExists(teams.TeamsId))
+                    if (!RegionsExists(regions.RegionsId))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace Web1Shamil.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(teams);
+            return View(regions);
         }
 
-        // GET: Teams/Delete/5
+        // GET: Regions/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace Web1Shamil.Controllers
                 return NotFound();
             }
 
-            var teams = await _context.Teams
-                .FirstOrDefaultAsync(m => m.TeamsId == id);
-            if (teams == null)
+            var regions = await _context.Regions
+                .FirstOrDefaultAsync(m => m.RegionsId == id);
+            if (regions == null)
             {
                 return NotFound();
             }
 
-            return View(teams);
+            return View(regions);
         }
 
-        // POST: Teams/Delete/5
+        // POST: Regions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var teams = await _context.Teams.FindAsync(id);
-            _context.Teams.Remove(teams);
+            var regions = await _context.Regions.FindAsync(id);
+            _context.Regions.Remove(regions);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TeamsExists(int id)
+        private bool RegionsExists(int id)
         {
-            return _context.Teams.Any(e => e.TeamsId == id);
+            return _context.Regions.Any(e => e.RegionsId == id);
         }
     }
 }

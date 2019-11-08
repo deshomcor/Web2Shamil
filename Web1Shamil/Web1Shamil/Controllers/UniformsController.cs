@@ -10,22 +10,22 @@ using Web1Shamil.Models.Classes;
 
 namespace Web1Shamil.Controllers
 {
-    public class TeamsController : Controller
+    public class UniformsController : Controller
     {
         private readonly MContext _context;
 
-        public TeamsController(MContext context)
+        public UniformsController(MContext context)
         {
             _context = context;
         }
 
-        // GET: Teams
+        // GET: Uniforms
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Teams.ToListAsync());
+            return View(await _context.Uniforms.ToListAsync());
         }
 
-        // GET: Teams/Details/5
+        // GET: Uniforms/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace Web1Shamil.Controllers
                 return NotFound();
             }
 
-            var teams = await _context.Teams
-                .FirstOrDefaultAsync(m => m.TeamsId == id);
-            if (teams == null)
+            var uniforms = await _context.Uniforms
+                .FirstOrDefaultAsync(m => m.UniformsId == id);
+            if (uniforms == null)
             {
                 return NotFound();
             }
 
-            return View(teams);
+            return View(uniforms);
         }
 
-        // GET: Teams/Create
+        // GET: Uniforms/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Teams/Create
+        // POST: Uniforms/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TeamsId,TeamsName,TeamsStadium,RegionsId,StageId")] Teams teams)
+        public async Task<IActionResult> Create([Bind("UniformsId,UniformsName,UniformsColor,TeamsId")] Uniforms uniforms)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(teams);
+                _context.Add(uniforms);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(teams);
+            return View(uniforms);
         }
 
-        // GET: Teams/Edit/5
+        // GET: Uniforms/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace Web1Shamil.Controllers
                 return NotFound();
             }
 
-            var teams = await _context.Teams.FindAsync(id);
-            if (teams == null)
+            var uniforms = await _context.Uniforms.FindAsync(id);
+            if (uniforms == null)
             {
                 return NotFound();
             }
-            return View(teams);
+            return View(uniforms);
         }
 
-        // POST: Teams/Edit/5
+        // POST: Uniforms/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TeamsId,TeamsName,TeamsStadium,RegionsId,StageId")] Teams teams)
+        public async Task<IActionResult> Edit(int id, [Bind("UniformsId,UniformsName,UniformsColor,TeamsId")] Uniforms uniforms)
         {
-            if (id != teams.TeamsId)
+            if (id != uniforms.UniformsId)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace Web1Shamil.Controllers
             {
                 try
                 {
-                    _context.Update(teams);
+                    _context.Update(uniforms);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TeamsExists(teams.TeamsId))
+                    if (!UniformsExists(uniforms.UniformsId))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace Web1Shamil.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(teams);
+            return View(uniforms);
         }
 
-        // GET: Teams/Delete/5
+        // GET: Uniforms/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace Web1Shamil.Controllers
                 return NotFound();
             }
 
-            var teams = await _context.Teams
-                .FirstOrDefaultAsync(m => m.TeamsId == id);
-            if (teams == null)
+            var uniforms = await _context.Uniforms
+                .FirstOrDefaultAsync(m => m.UniformsId == id);
+            if (uniforms == null)
             {
                 return NotFound();
             }
 
-            return View(teams);
+            return View(uniforms);
         }
 
-        // POST: Teams/Delete/5
+        // POST: Uniforms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var teams = await _context.Teams.FindAsync(id);
-            _context.Teams.Remove(teams);
+            var uniforms = await _context.Uniforms.FindAsync(id);
+            _context.Uniforms.Remove(uniforms);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TeamsExists(int id)
+        private bool UniformsExists(int id)
         {
-            return _context.Teams.Any(e => e.TeamsId == id);
+            return _context.Uniforms.Any(e => e.UniformsId == id);
         }
     }
 }
