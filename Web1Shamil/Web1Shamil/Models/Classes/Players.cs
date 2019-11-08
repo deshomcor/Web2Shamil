@@ -9,13 +9,11 @@ namespace Web1Shamil.Models.Classes
 {
     public class Players
     {
-        [Key]
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        [ForeignKey("Teams")]
+        public int PlayersId { get; set; }
+        public string PlayersName { get; set; }
+        public string PlayersSurname { get; set; }
         public int? TeamsId { get; set; }
-        public Teams Team { get; set; }
-
+        public IList<PlayersPositions> PlayersPositions { get; set; }
+        public Teams Teams { get; set; }
     }
 }

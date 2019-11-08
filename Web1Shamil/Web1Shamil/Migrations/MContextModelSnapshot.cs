@@ -18,8 +18,7 @@ namespace Web1Shamil.Migrations
 
             modelBuilder.Entity("Web1Shamil.Models.Classes.Coach", b =>
                 {
-                    b.Property<int>("CoachId")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("CoachId");
 
                     b.Property<string>("CoachName");
 
@@ -32,52 +31,156 @@ namespace Web1Shamil.Migrations
 
             modelBuilder.Entity("Web1Shamil.Models.Classes.Players", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PlayersId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("PlayersName");
 
-                    b.Property<string>("Surname");
+                    b.Property<string>("PlayersSurname");
 
                     b.Property<int?>("TeamsId");
 
-                    b.HasKey("Id");
+                    b.HasKey("PlayersId");
 
                     b.HasIndex("TeamsId");
 
                     b.ToTable("Players");
                 });
 
-            modelBuilder.Entity("Web1Shamil.Models.Classes.Teams", b =>
+            modelBuilder.Entity("Web1Shamil.Models.Classes.PlayersPositions", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PlayersId");
+
+                    b.Property<int>("PositionsId");
+
+                    b.HasKey("PlayersId", "PositionsId");
+
+                    b.HasIndex("PositionsId");
+
+                    b.ToTable("PlayersPositions");
+                });
+
+            modelBuilder.Entity("Web1Shamil.Models.Classes.Positions", b =>
+                {
+                    b.Property<int>("PositionsId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("CoachId");
+                    b.Property<string>("PositionsName");
 
-                    b.Property<string>("Name");
+                    b.HasKey("PositionsId");
 
-                    b.Property<string>("Stadium");
+                    b.ToTable("Positions");
+                });
 
-                    b.HasKey("Id");
+            modelBuilder.Entity("Web1Shamil.Models.Classes.Regions", b =>
+                {
+                    b.Property<int>("RegionsId")
+                        .ValueGeneratedOnAdd();
 
-                    b.HasIndex("CoachId");
+                    b.Property<string>("RegionsName");
+
+                    b.HasKey("RegionsId");
+
+                    b.ToTable("Regions");
+                });
+
+            modelBuilder.Entity("Web1Shamil.Models.Classes.Stage", b =>
+                {
+                    b.Property<int>("StageId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("StageName");
+
+                    b.HasKey("StageId");
+
+                    b.ToTable("Stages");
+                });
+
+            modelBuilder.Entity("Web1Shamil.Models.Classes.Teams", b =>
+                {
+                    b.Property<int>("TeamsId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("RegionsId");
+
+                    b.Property<int?>("StageId");
+
+                    b.Property<string>("TeamsName");
+
+                    b.Property<string>("TeamsStadium");
+
+                    b.HasKey("TeamsId");
+
+                    b.HasIndex("RegionsId");
+
+                    b.HasIndex("StageId");
 
                     b.ToTable("Teams");
                 });
 
+            modelBuilder.Entity("Web1Shamil.Models.Classes.Uniforms", b =>
+                {
+                    b.Property<int>("UniformsId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("TeamsId");
+
+                    b.Property<string>("UniformsColor");
+
+                    b.Property<string>("UniformsName");
+
+                    b.HasKey("UniformsId");
+
+                    b.HasIndex("TeamsId")
+                        .IsUnique();
+
+                    b.ToTable("Uniforms");
+                });
+
+            modelBuilder.Entity("Web1Shamil.Models.Classes.Coach", b =>
+                {
+                    b.HasOne("Web1Shamil.Models.Classes.Teams", "Teams")
+                        .WithOne("Coach")
+                        .HasForeignKey("Web1Shamil.Models.Classes.Coach", "CoachId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("Web1Shamil.Models.Classes.Players", b =>
                 {
-                    b.HasOne("Web1Shamil.Models.Classes.Teams", "Team")
+                    b.HasOne("Web1Shamil.Models.Classes.Teams", "Teams")
                         .WithMany("Players")
                         .HasForeignKey("TeamsId");
                 });
 
+            modelBuilder.Entity("Web1Shamil.Models.Classes.PlayersPositions", b =>
+                {
+                    b.HasOne("Web1Shamil.Models.Classes.Players", "Players")
+                        .WithMany("PlayersPositions")
+                        .HasForeignKey("PlayersId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Web1Shamil.Models.Classes.Positions", "Positions")
+                        .WithMany("PlayersPositions")
+                        .HasForeignKey("PositionsId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("Web1Shamil.Models.Classes.Teams", b =>
                 {
-                    b.HasOne("Web1Shamil.Models.Classes.Coach", "Coach")
-                        .WithMany()
-                        .HasForeignKey("CoachId");
+                    b.HasOne("Web1Shamil.Models.Classes.Regions", "Regions")
+                        .WithMany("Teams")
+                        .HasForeignKey("RegionsId");
+
+                    b.HasOne("Web1Shamil.Models.Classes.Stage", "Stages")
+                        .WithMany("Teams")
+                        .HasForeignKey("StageId");
+                });
+
+            modelBuilder.Entity("Web1Shamil.Models.Classes.Uniforms", b =>
+                {
+                    b.HasOne("Web1Shamil.Models.Classes.Teams", "Teams")
+                        .WithOne("Uniforms")
+                        .HasForeignKey("Web1Shamil.Models.Classes.Uniforms", "TeamsId");
                 });
 #pragma warning restore 612, 618
         }
