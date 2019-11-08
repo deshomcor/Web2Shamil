@@ -1,0 +1,36 @@
+﻿@model Web1Shamil.Models.Classes.Uniforms
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Uniforms</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UniformsName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UniformsName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UniformsColor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UniformsColor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TeamsId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TeamsId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.UniformsId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

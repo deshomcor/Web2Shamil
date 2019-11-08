@@ -1,4 +1,4 @@
-﻿@model Web1Shamil.Models.Classes.Teams
+﻿@model Web1Shamil.Models.Classes.Positions
 
 @{
     ViewData["Title"] = "Delete";
@@ -8,25 +8,19 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Teams</h4>
+    <h4>Positions</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TeamsName)
+            @Html.DisplayNameFor(model => model.PositionsName)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.TeamsName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TeamsStadium)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TeamsStadium)
+            @Html.DisplayFor(model => model.PositionsName)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="TeamsId" />
+        <input type="hidden" asp-for="PositionsId" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
         <a asp-action="Index">Back to List</a>
     </form>

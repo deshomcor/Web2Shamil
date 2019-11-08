@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Web1Shamil.Models.Classes.Uniforms>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UniformsName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UniformsColor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeamsId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UniformsName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UniformsColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamsId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.UniformsId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.UniformsId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.UniformsId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

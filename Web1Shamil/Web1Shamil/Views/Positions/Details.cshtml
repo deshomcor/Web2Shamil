@@ -1,0 +1,24 @@
+﻿@model Web1Shamil.Models.Classes.Positions
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Positions</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PositionsName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PositionsName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PositionsId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,4 +1,4 @@
-﻿@model Web1Shamil.Models.Classes.Players
+﻿@model Web1Shamil.Models.Classes.Uniforms
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,26 +6,26 @@
 
 <h2>Edit</h2>
 
-<h4>Players</h4>
+<h4>Uniforms</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="PlayersId" />
+            <input type="hidden" asp-for="UniformsId" />
             <div class="form-group">
-                <label asp-for="PlayersName" class="control-label"></label>
-                <input asp-for="PlayersName" class="form-control" />
-                <span asp-validation-for="PlayersName" class="text-danger"></span>
+                <label asp-for="UniformsName" class="control-label"></label>
+                <input asp-for="UniformsName" class="form-control" />
+                <span asp-validation-for="UniformsName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PlayersSurname" class="control-label"></label>
-                <input asp-for="PlayersSurname" class="form-control" />
-                <span asp-validation-for="PlayersSurname" class="text-danger"></span>
+                <label asp-for="UniformsColor" class="control-label"></label>
+                <input asp-for="UniformsColor" class="form-control" />
+                <span asp-validation-for="UniformsColor" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TeamsId" class="control-label"></label>
-                <select asp-for="TeamsId" class="form-control" asp-items="ViewBag.TeamsId"></select>
+                <input asp-for="TeamsId" class="form-control" />
                 <span asp-validation-for="TeamsId" class="text-danger"></span>
             </div>
             <div class="form-group">
