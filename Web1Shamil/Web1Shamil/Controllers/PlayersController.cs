@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Web1Shamil.Data;
 using Web1Shamil.Models.Classes;
+using System.Web;
 
 namespace Web1Shamil.Controllers
 {
     public class PlayersController : Controller
     {
+        private MContext db = new MContext();
         private readonly MContext _context;
 
         public PlayersController(MContext context)
@@ -47,6 +49,11 @@ namespace Web1Shamil.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        public JsonResult IsPlayerNameAvailable(string PlayersName)
+        {
+           return Json(!db.Players.Any(player => player.PlayersName == PlayersName));
         }
 
         // POST: Players/Create
