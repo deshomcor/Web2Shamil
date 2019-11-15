@@ -22,7 +22,8 @@ namespace Web1Shamil.Controllers
         // GET: Uniforms
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Uniforms.ToListAsync());
+            var mContext = _context.Uniforms.Include(u => u.Teams);
+            return View(await mContext.ToListAsync());
         }
 
         // GET: Uniforms/Details/5
@@ -34,6 +35,7 @@ namespace Web1Shamil.Controllers
             }
 
             var uniforms = await _context.Uniforms
+                .Include(u => u.Teams)
                 .FirstOrDefaultAsync(m => m.UniformsId == id);
             if (uniforms == null)
             {
@@ -46,6 +48,7 @@ namespace Web1Shamil.Controllers
         // GET: Uniforms/Create
         public IActionResult Create()
         {
+            ViewData["TeamsId"] = new SelectList(_context.Teams, "TeamsId", "TeamsId");
             return View();
         }
 
@@ -62,6 +65,7 @@ namespace Web1Shamil.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["TeamsId"] = new SelectList(_context.Teams, "TeamsId", "TeamsId", uniforms.TeamsId);
             return View(uniforms);
         }
 
@@ -78,6 +82,7 @@ namespace Web1Shamil.Controllers
             {
                 return NotFound();
             }
+            ViewData["TeamsId"] = new SelectList(_context.Teams, "TeamsId", "TeamsId", uniforms.TeamsId);
             return View(uniforms);
         }
 
@@ -113,6 +118,7 @@ namespace Web1Shamil.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["TeamsId"] = new SelectList(_context.Teams, "TeamsId", "TeamsId", uniforms.TeamsId);
             return View(uniforms);
         }
 
@@ -125,6 +131,7 @@ namespace Web1Shamil.Controllers
             }
 
             var uniforms = await _context.Uniforms
+                .Include(u => u.Teams)
                 .FirstOrDefaultAsync(m => m.UniformsId == id);
             if (uniforms == null)
             {

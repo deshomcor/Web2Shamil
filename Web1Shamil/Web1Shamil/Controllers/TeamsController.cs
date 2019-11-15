@@ -22,7 +22,8 @@ namespace Web1Shamil.Controllers
         // GET: Teams
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Teams.ToListAsync());
+            var mContext = _context.Teams.Include(t => t.Regions).Include(t => t.Stages);
+            return View(await mContext.ToListAsync());
         }
 
         // GET: Teams/Details/5
@@ -34,6 +35,8 @@ namespace Web1Shamil.Controllers
             }
 
             var teams = await _context.Teams
+                .Include(t => t.Regions)
+                .Include(t => t.Stages)
                 .FirstOrDefaultAsync(m => m.TeamsId == id);
             if (teams == null)
             {
@@ -46,6 +49,8 @@ namespace Web1Shamil.Controllers
         // GET: Teams/Create
         public IActionResult Create()
         {
+            ViewData["RegionsId"] = new SelectList(_context.Regions, "RegionsId", "RegionsName");
+            ViewData["StageId"] = new SelectList(_context.Stages, "StageId", "StageName");
             return View();
         }
 
@@ -62,6 +67,8 @@ namespace Web1Shamil.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["RegionsId"] = new SelectList(_context.Regions, "RegionsId", "RegionsName", teams.RegionsId);
+            ViewData["StageId"] = new SelectList(_context.Stages, "StageId", "StageName", teams.StageId);
             return View(teams);
         }
 
@@ -78,6 +85,8 @@ namespace Web1Shamil.Controllers
             {
                 return NotFound();
             }
+            ViewData["RegionsId"] = new SelectList(_context.Regions, "RegionsId", "RegionsName", teams.RegionsId);
+            ViewData["StageId"] = new SelectList(_context.Stages, "StageId", "StageName", teams.StageId);
             return View(teams);
         }
 
@@ -113,6 +122,8 @@ namespace Web1Shamil.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["RegionsId"] = new SelectList(_context.Regions, "RegionsId", "RegionsName", teams.RegionsId);
+            ViewData["StageId"] = new SelectList(_context.Stages, "StageId", "StageName", teams.StageId);
             return View(teams);
         }
 
@@ -125,6 +136,8 @@ namespace Web1Shamil.Controllers
             }
 
             var teams = await _context.Teams
+                .Include(t => t.Regions)
+                .Include(t => t.Stages)
                 .FirstOrDefaultAsync(m => m.TeamsId == id);
             if (teams == null)
             {

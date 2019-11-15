@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,13 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Web1Shamil.Data;
 using Web1Shamil.Models.Classes;
-using System.Web;
 
 namespace Web1Shamil.Controllers
 {
     public class PlayersController : Controller
     {
-        private MContext db = new MContext();
         private readonly MContext _context;
 
         public PlayersController(MContext context)
@@ -21,12 +19,17 @@ namespace Web1Shamil.Controllers
             _context = context;
         }
 
+        [HttpPost]
+        public JsonResult IsPlayerNameAvailable(string PlayersName)
+        {
+            return Json(!_context.Players.Any(players => players.PlayersName == PlayersName));
+        }
         // GET: Players
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Players.ToListAsync());
+            var mContext = _context.Players.Include(p => p.Teams);
+            return View(await mContext.ToListAsync());
         }
-
         // GET: Players/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -36,6 +39,7 @@ namespace Web1Shamil.Controllers
             }
 
             var players = await _context.Players
+                .Include(p => p.Teams)
                 .FirstOrDefaultAsync(m => m.PlayersId == id);
             if (players == null)
             {
@@ -48,12 +52,8 @@ namespace Web1Shamil.Controllers
         // GET: Players/Create
         public IActionResult Create()
         {
+            ViewData["TeamsId"] = new SelectList(_context.Teams, "TeamsId", "TeamsName");
             return View();
-        }
-
-        public JsonResult IsPlayerNameAvailable(string PlayersName)
-        {
-           return Json(!db.Players.Any(player => player.PlayersName == PlayersName));
         }
 
         // POST: Players/Create
@@ -69,6 +69,7 @@ namespace Web1Shamil.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["TeamsId"] = new SelectList(_context.Teams, "TeamsId", "TeamsName", players.TeamsId);
             return View(players);
         }
 
@@ -85,6 +86,7 @@ namespace Web1Shamil.Controllers
             {
                 return NotFound();
             }
+            ViewData["TeamsId"] = new SelectList(_context.Teams, "TeamsId", "TeamsName", players.TeamsId);
             return View(players);
         }
 
@@ -120,6 +122,7 @@ namespace Web1Shamil.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["TeamsId"] = new SelectList(_context.Teams, "TeamsId", "TeamsName", players.TeamsId);
             return View(players);
         }
 
@@ -132,6 +135,7 @@ namespace Web1Shamil.Controllers
             }
 
             var players = await _context.Players
+                .Include(p => p.Teams)
                 .FirstOrDefaultAsync(m => m.PlayersId == id);
             if (players == null)
             {

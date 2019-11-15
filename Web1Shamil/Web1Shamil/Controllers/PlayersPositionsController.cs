@@ -37,7 +37,7 @@ namespace Web1Shamil.Controllers
             var playersPositions = await _context.PlayersPositions
                 .Include(p => p.Players)
                 .Include(p => p.Positions)
-                .FirstOrDefaultAsync(m => m.PlayersId == id);
+                .FirstOrDefaultAsync(m => m.PlayersPositionsId == id);
             if (playersPositions == null)
             {
                 return NotFound();
@@ -49,8 +49,8 @@ namespace Web1Shamil.Controllers
         // GET: PlayersPositions/Create
         public IActionResult Create()
         {
-            ViewData["PlayersId"] = new SelectList(_context.Players, "PlayersId", "PlayersId");
-            ViewData["PositionsId"] = new SelectList(_context.Positions, "PositionsId", "PositionsId");
+            ViewData["PlayersId"] = new SelectList(_context.Players, "PlayersId", "PlayersName");
+            ViewData["PositionsId"] = new SelectList(_context.Positions, "PositionsId", "PositionsName");
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace Web1Shamil.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PlayersId,PositionsId")] PlayersPositions playersPositions)
+        public async Task<IActionResult> Create([Bind("PlayersPositionsId,PlayersId,PositionsId")] PlayersPositions playersPositions)
         {
             if (ModelState.IsValid)
             {
@@ -67,8 +67,8 @@ namespace Web1Shamil.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PlayersId"] = new SelectList(_context.Players, "PlayersId", "PlayersId", playersPositions.PlayersId);
-            ViewData["PositionsId"] = new SelectList(_context.Positions, "PositionsId", "PositionsId", playersPositions.PositionsId);
+            ViewData["PlayersId"] = new SelectList(_context.Players, "PlayersId", "PlayersName", playersPositions.PlayersId);
+            ViewData["PositionsId"] = new SelectList(_context.Positions, "PositionsId", "PositionsName", playersPositions.PositionsId);
             return View(playersPositions);
         }
 
@@ -85,8 +85,8 @@ namespace Web1Shamil.Controllers
             {
                 return NotFound();
             }
-            ViewData["PlayersId"] = new SelectList(_context.Players, "PlayersId", "PlayersId", playersPositions.PlayersId);
-            ViewData["PositionsId"] = new SelectList(_context.Positions, "PositionsId", "PositionsId", playersPositions.PositionsId);
+            ViewData["PlayersId"] = new SelectList(_context.Players, "PlayersId", "PlayersName", playersPositions.PlayersId);
+            ViewData["PositionsId"] = new SelectList(_context.Positions, "PositionsId", "PositionsName", playersPositions.PositionsId);
             return View(playersPositions);
         }
 
@@ -95,9 +95,9 @@ namespace Web1Shamil.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PlayersId,PositionsId")] PlayersPositions playersPositions)
+        public async Task<IActionResult> Edit(int id, [Bind("PlayersPositionsId,PlayersId,PositionsId")] PlayersPositions playersPositions)
         {
-            if (id != playersPositions.PlayersId)
+            if (id != playersPositions.PlayersPositionsId)
             {
                 return NotFound();
             }
@@ -111,7 +111,7 @@ namespace Web1Shamil.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PlayersPositionsExists(playersPositions.PlayersId))
+                    if (!PlayersPositionsExists(playersPositions.PlayersPositionsId))
                     {
                         return NotFound();
                     }
@@ -122,8 +122,8 @@ namespace Web1Shamil.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PlayersId"] = new SelectList(_context.Players, "PlayersId", "PlayersId", playersPositions.PlayersId);
-            ViewData["PositionsId"] = new SelectList(_context.Positions, "PositionsId", "PositionsId", playersPositions.PositionsId);
+            ViewData["PlayersId"] = new SelectList(_context.Players, "PlayersId", "PlayersName", playersPositions.PlayersId);
+            ViewData["PositionsId"] = new SelectList(_context.Positions, "PositionsId", "PositionsName", playersPositions.PositionsId);
             return View(playersPositions);
         }
 
@@ -138,7 +138,7 @@ namespace Web1Shamil.Controllers
             var playersPositions = await _context.PlayersPositions
                 .Include(p => p.Players)
                 .Include(p => p.Positions)
-                .FirstOrDefaultAsync(m => m.PlayersId == id);
+                .FirstOrDefaultAsync(m => m.PlayersPositionsId == id);
             if (playersPositions == null)
             {
                 return NotFound();
@@ -160,7 +160,7 @@ namespace Web1Shamil.Controllers
 
         private bool PlayersPositionsExists(int id)
         {
-            return _context.PlayersPositions.Any(e => e.PlayersId == id);
+            return _context.PlayersPositions.Any(e => e.PlayersPositionsId == id);
         }
     }
 }

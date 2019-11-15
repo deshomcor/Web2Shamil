@@ -22,7 +22,8 @@ namespace Web1Shamil.Controllers
         // GET: Coaches
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Coaches.ToListAsync());
+            var mContext = _context.Coaches.Include(c => c.Teams);
+            return View(await mContext.ToListAsync());
         }
 
         // GET: Coaches/Details/5
@@ -34,6 +35,7 @@ namespace Web1Shamil.Controllers
             }
 
             var coach = await _context.Coaches
+                .Include(c => c.Teams)
                 .FirstOrDefaultAsync(m => m.CoachId == id);
             if (coach == null)
             {
@@ -46,6 +48,7 @@ namespace Web1Shamil.Controllers
         // GET: Coaches/Create
         public IActionResult Create()
         {
+            ViewData["CoachId"] = new SelectList(_context.Teams, "TeamsId", "TeamsId");
             return View();
         }
 
@@ -62,6 +65,7 @@ namespace Web1Shamil.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CoachId"] = new SelectList(_context.Teams, "TeamsId", "TeamsId", coach.CoachId);
             return View(coach);
         }
 
@@ -78,6 +82,7 @@ namespace Web1Shamil.Controllers
             {
                 return NotFound();
             }
+            ViewData["CoachId"] = new SelectList(_context.Teams, "TeamsId", "TeamsId", coach.CoachId);
             return View(coach);
         }
 
@@ -113,6 +118,7 @@ namespace Web1Shamil.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CoachId"] = new SelectList(_context.Teams, "TeamsId", "TeamsId", coach.CoachId);
             return View(coach);
         }
 
@@ -125,6 +131,7 @@ namespace Web1Shamil.Controllers
             }
 
             var coach = await _context.Coaches
+                .Include(c => c.Teams)
                 .FirstOrDefaultAsync(m => m.CoachId == id);
             if (coach == null)
             {
