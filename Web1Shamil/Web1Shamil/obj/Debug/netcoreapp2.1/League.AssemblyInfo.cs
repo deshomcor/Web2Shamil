@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Web1Shamil")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("League")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("Web1Shamil")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Web1Shamil")]
+[assembly: System.Reflection.AssemblyProductAttribute("League")]
+[assembly: System.Reflection.AssemblyTitleAttribute("League")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Создано классом WriteCodeFragment MSBuild.

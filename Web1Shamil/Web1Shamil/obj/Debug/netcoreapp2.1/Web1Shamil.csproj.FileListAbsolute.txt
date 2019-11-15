@@ -62,7 +62,6 @@ C:\Users\технодом\Desktop\Web2Shamil-master\Web1Shamil\Web1Shamil\bin\De
 C:\Users\технодом\Desktop\Web2Shamil-master\Web1Shamil\Web1Shamil\bin\Debug\netcoreapp2.1\Web1Shamil.pdb
 C:\Users\технодом\Desktop\Web2Shamil-master\Web1Shamil\Web1Shamil\bin\Debug\netcoreapp2.1\Web1Shamil.Views.dll
 C:\Users\технодом\Desktop\Web2Shamil-master\Web1Shamil\Web1Shamil\bin\Debug\netcoreapp2.1\Web1Shamil.Views.pdb
-C:\Users\технодом\Desktop\Web2Shamil-master\Web1Shamil\Web1Shamil\obj\Debug\netcoreapp2.1\Web1Shamil.csprojAssemblyReference.cache
 C:\Users\технодом\Desktop\Web2Shamil-master\Web1Shamil\Web1Shamil\obj\Debug\netcoreapp2.1\Web1Shamil.csproj.CoreCompileInputs.cache
 C:\Users\технодом\Desktop\Web2Shamil-master\Web1Shamil\Web1Shamil\obj\Debug\netcoreapp2.1\Web1Shamil.RazorAssemblyInfo.cache
 C:\Users\технодом\Desktop\Web2Shamil-master\Web1Shamil\Web1Shamil\obj\Debug\netcoreapp2.1\Web1Shamil.RazorAssemblyInfo.cs
@@ -122,3 +121,4 @@ C:\Users\технодом\Desktop\Web2Shamil-master\Web1Shamil\Web1Shamil\obj\De
 C:\Users\технодом\Desktop\Web2Shamil-master\Web1Shamil\Web1Shamil\obj\Debug\netcoreapp2.1\Razor\Views\Uniforms\Details.g.cshtml.cs
 C:\Users\технодом\Desktop\Web2Shamil-master\Web1Shamil\Web1Shamil\obj\Debug\netcoreapp2.1\Razor\Views\Uniforms\Edit.g.cshtml.cs
 C:\Users\технодом\Desktop\Web2Shamil-master\Web1Shamil\Web1Shamil\obj\Debug\netcoreapp2.1\Razor\Views\Uniforms\Index.g.cshtml.cs
+C:\Users\технодом\Desktop\Web2Shamil-master\Web1Shamil\Web1Shamil\obj\Debug\netcoreapp2.1\Web1Shamil.csprojAssemblyReference.cache
