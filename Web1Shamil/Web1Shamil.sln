@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web1Shamil", "Web1Shamil\Web1Shamil.csproj", "{F7FCDC7E-AE06-4974-8BE0-1F78095E22A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web1Shamil", "Web1Shamil\Web1Shamil.csproj", "{F7FCDC7E-AE06-4974-8BE0-1F78095E22A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeagueTest", "LeagueTest\LeagueTest.csproj", "{9A382491-541E-4FB6-A4A8-1EFA7135DDD0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F7FCDC7E-AE06-4974-8BE0-1F78095E22A0} = {F7FCDC7E-AE06-4974-8BE0-1F78095E22A0}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{F7FCDC7E-AE06-4974-8BE0-1F78095E22A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7FCDC7E-AE06-4974-8BE0-1F78095E22A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7FCDC7E-AE06-4974-8BE0-1F78095E22A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A382491-541E-4FB6-A4A8-1EFA7135DDD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A382491-541E-4FB6-A4A8-1EFA7135DDD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A382491-541E-4FB6-A4A8-1EFA7135DDD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A382491-541E-4FB6-A4A8-1EFA7135DDD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
