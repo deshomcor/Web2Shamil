@@ -14,17 +14,17 @@
             @Html.DisplayNameFor(model => model.Players)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Players.PlayersId)
+            @Html.DisplayFor(model => model.Players.PlayersName)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Positions)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Positions.PositionsId)
+            @Html.DisplayFor(model => model.Positions.PositionsName)
         </dd>
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Edit" asp-route-id="@Model.PlayersPositionsId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

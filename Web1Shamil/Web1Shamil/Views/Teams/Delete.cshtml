@@ -23,6 +23,18 @@
         <dd>
             @Html.DisplayFor(model => model.TeamsStadium)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Regions)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Regions.RegionsName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Stages)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Stages.StageName)
+        </dd>
     </dl>
     
     <form asp-action="Delete">

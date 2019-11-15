@@ -18,6 +18,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.TeamsStadium)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Regions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stages)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -29,6 +35,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TeamsStadium)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Regions.RegionsName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stages.StageName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.TeamsId">Edit</a> |

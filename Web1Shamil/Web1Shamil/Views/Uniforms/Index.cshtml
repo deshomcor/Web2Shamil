@@ -19,7 +19,7 @@
                 @Html.DisplayNameFor(model => model.UniformsColor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TeamsId)
+                @Html.DisplayNameFor(model => model.Teams)
             </th>
             <th></th>
         </tr>
@@ -34,7 +34,7 @@
                 @Html.DisplayFor(modelItem => item.UniformsColor)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TeamsId)
+                @Html.DisplayFor(modelItem => item.Teams.TeamsId)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.UniformsId">Edit</a> |

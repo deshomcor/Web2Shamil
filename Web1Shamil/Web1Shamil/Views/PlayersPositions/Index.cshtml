@@ -25,15 +25,15 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Players.PlayersId)
+                @Html.DisplayFor(modelItem => item.Players.PlayersName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Positions.PositionsId)
+                @Html.DisplayFor(modelItem => item.Positions.PositionsName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <a asp-action="Edit" asp-route-id="@item.PlayersPositionsId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PlayersPositionsId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PlayersPositionsId">Delete</a>
             </td>
         </tr>
 }

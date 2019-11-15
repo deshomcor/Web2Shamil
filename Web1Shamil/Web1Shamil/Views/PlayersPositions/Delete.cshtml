@@ -15,19 +15,18 @@
             @Html.DisplayNameFor(model => model.Players)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Players.PlayersId)
+            @Html.DisplayFor(model => model.Players.PlayersName)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Positions)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Positions.PositionsId)
+            @Html.DisplayFor(model => model.Positions.PositionsName)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="PlayersId" />
-        <input type="hidden" asp-for="PositionsId" />
+        <input type="hidden" asp-for="PlayersPositionsId" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
         <a asp-action="Index">Back to List</a>
     </form>
