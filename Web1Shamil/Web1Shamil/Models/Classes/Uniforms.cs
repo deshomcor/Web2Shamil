@@ -9,6 +9,10 @@ namespace Web1Shamil.Models.Classes
 {
     public class Uniforms
     {
+        public Uniforms()
+        {
+            this.UniformsColor = "White";
+        }
         [Key]
         public int UniformsId { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Uniforms name required entry")]
@@ -18,8 +22,8 @@ namespace Web1Shamil.Models.Classes
         [StringLength(16)]
         public string UniformsColor { get; set; }
         public int? TeamsId { get; set; }
-        public virtual Teams Teams { get; set; }
-        
+        public Teams Teams { get; set; }
+
 
     }
 }

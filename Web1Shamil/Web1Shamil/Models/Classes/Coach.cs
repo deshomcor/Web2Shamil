@@ -5,6 +5,11 @@ namespace Web1Shamil.Models.Classes
 {
     public class Coach
     {
+        public Coach()
+        {
+            this.CoachName= "Vasya";
+            this.CoachSurname = "Vasilyev";
+        }
         [ForeignKey("Teams")]
         public int CoachId { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Coach name required entry")]

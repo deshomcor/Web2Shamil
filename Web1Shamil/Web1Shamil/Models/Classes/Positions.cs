@@ -8,10 +8,15 @@ namespace Web1Shamil.Models.Classes
 {
     public class Positions
     {
+        public Positions()
+        {
+            this.PositionsName = "Goalkeeper";
+        }
         public int PositionsId {get; set;}
-        public String PositionsName { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Position name required entry")]
         [StringLength(16)]
+        public String PositionsName { get; set; }
+       
         public IList<PlayersPositions> PlayersPositions { get; set; }
     }
 }
